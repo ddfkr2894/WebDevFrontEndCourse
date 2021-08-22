@@ -1,0 +1,63 @@
+body{
+    background-image: url(/imagenes/Rick-and-morty.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* body{
+    background-color: rgb(5, 47, 56);
+} */
+
+header{
+    color: pink;
+    text-align: center;
+    font-size: 20px;
+}
+
+nav{
+    width: 20%;
+    float: left;
+}
+
+nav a{
+    background-color: rgb(172, 120, 129);
+    border-radius: 10px 0 10px 0;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+
+}
+
+section{
+    float: right;
+    width: 75%;
+    color: purple;
+    border-radius: 5px;
+    /* border: 1px solid black; */
+    box-shadow: 1px 0 4px rgb(0, 0, 0, .2);
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+aside{
+    float: right;
+    width: 30%;
+    padding: 5px;
+    margin: 5px;
+    font-style: italic;
+    color: blue;
+    box-shadow: inset 5px 0 5px -5px rgb(68, 68, 252);
+}
+
+footer{
+    clear: both;
+    padding: 1px;
+    text-align: center;
+}
+
+footer a{
+    text-decoration: none;
+}

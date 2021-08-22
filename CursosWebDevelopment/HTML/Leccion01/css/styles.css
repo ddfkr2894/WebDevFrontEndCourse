@@ -1,0 +1,33 @@
+h1{
+    color:blue;
+}
+
+/* Primer Ejemplo */
+/* p{
+    color:white;
+    background-color: burlywood;
+    padding:15px;
+    border: 10px solid green;
+    margin: 50px;
+} */
+
+/* Segundo Ejemplo */
+/* p{
+    color:blueviolet;
+    background-color: burlywood;
+    padding:15px;
+    border: 10px solid green;
+    margin-top: 40px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+} */
+
+/* Tercer Ejemplo */
+p{
+    color:blueviolet;
+    background-color: burlywood;
+    padding:15px;
+    border: 10px solid green;
+    margin: 20px 15px 10px 15px;
+}

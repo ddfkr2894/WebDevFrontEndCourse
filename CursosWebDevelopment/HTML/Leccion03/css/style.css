@@ -1,0 +1,19 @@
+h1{
+    color: brown;
+}
+
+a:link{
+    color: brown;
+    text-decoration: none;
+}
+
+a:visited{
+    color: chartreuse;
+    text-decoration: none;
+}
+
+/* Cuando nos ponemos encima del link */
+a:hover{
+    color: blue;
+    text-decoration: none;
+}
