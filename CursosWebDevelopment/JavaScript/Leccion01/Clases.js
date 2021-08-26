@@ -4,9 +4,19 @@
 
 // Definimos una clase con nombre 'Persona' y le asignamos 2 parametros 
 class Persona{
+
+    //Definimos un atributo static dentro de nuestra clase (sólo se podra acceder a ella por medio de la clase
+    // 'Persona' y sus clases herdedadas)
+    static contadorDeObjetosPersona = 0;
+
+    // Definimos un atributo No Static al cual si podremos acceder a él mediante nuestros objetos creados
+    email = 'Valor X default'
+
     constructor(nombre, apellido){
         this._nombre = nombre; 
         this._apellido = apellido;
+        Persona.contadorDeObjetosPersona++
+        console.log("Se incrementa variable 'contadorDeObjetosPersona': " + Persona.contadorDeObjetosPersona);
     }
 
     get nombre(){
@@ -28,12 +38,33 @@ class Persona{
     nombreCompleto(){
         return this._nombre + ' ' + this._apellido;
     }
+
+    //Sobreescribiendo el metodo de la clase Padre (Object)
+    toString(){
+        //Se aplica poliformismo (multiples formas en tiempo de ejecucion)
+        //el metodo que se ejecuta depende si es una referencia de tipo padre 
+        //o de tipo hijo
+        return this.nombreCompleto();
+    }
+    
+    // Metodo static 'saludar' dentro de nuestra clase 'Persona'
+    static saludar(){
+        console.log("Saludos desde metodo static");
+    }
+    // Otro metodo static dentro de nuestra 'Persona' con un objeto como parametro
+    static saludar2(persona){
+        console.log(persona.nombre);
+    }
 }
 
 class Empleado extends Persona{
+    static contadorDeObjetosEmpleado = 0;
+
     constructor(nombre, apellido, departamento){    // le agregamos los parametro de la clase padre
         super(nombre, apellido);    // Esta línea está mandando a llamar al constructor de la clase padre
         this._departamento = departamento;
+        Empleado.contadorDeObjetosEmpleado++;
+        console.log("Se incrementa variable 'contadorDeObjetosEmpleado': " + Empleado.contadorDeObjetosEmpleado);
     }
     get departamento(){
         return this._departamento
@@ -73,3 +104,91 @@ console.log(empleado1._departamento);
 
 // Mandamos llamar al metodo 'nombreCompleto' de la clase padre 
 console.log(empleado1.nombreCompleto());
+
+// A continuación en la siguiente línea podemos ver como no es posible mandar al metodo static 'saludar' 
+// desde el objeto 'persona1'
+// persona1.saludar();
+// Sin embargo si es posible mandarlo llamar desde una clase
+Persona.saludar();
+
+// Mandamos llamar nuestro segundo metodo static de la clase 'Persona' asignadole como
+// argumento el objeto 'persona1'
+Persona.saludar2(persona1);
+
+// Mandamos llamar nuestros metodos static de la clase 'Persona' desde la clase hija 'Empleado'
+// asignadole como argumento el objeto 'empleado1'
+Empleado.saludar();
+Empleado.saludar2(empleado1);
+
+// Mandamos llamar nuestro atributo No Estatic 'email' desde nuestros objetos creados
+console.log(persona1.email);
+console.log(persona2.email);
+console.log(empleado1.email);
+
+// Intentamos mandar llamar nuestro aitrbuto No estatic desde nuestras clases padre e hija 
+// y podemos ver como nos marca error 'Undefined' ya que para poder acceder con clases necesitariamos
+// tener atributos estatics
+// console.log(Persona.email);
+// console.log(Empleado.email);
+// Ambas lineas marcarn undefined
+
+// ------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------
+// A coninuación creamos otra clase 'perro' para hacer un breve ejercicio en el cual cada vez
+// que creemos un nuevo objeto de esta clase estaremos asignadole un 'ID' por medio de la variable
+// estatica 'contadorDeObjetosPerro'.
+class Perro{
+    
+    static contadorDeObjetosPerro = 0;
+    
+    // Crearemos una variable estatica que no pueda ser modificada como lo hacemos con las variables 'const'.
+    static get NumeroMaximoDeObjetosPerro(){
+        return 5;
+    }
+    
+    constructor(nombre, apellido){
+        this._nombre = nombre;
+        this._apellido = apellido;
+        if (Perro.contadorDeObjetosPerro < Perro.NumeroMaximoDeObjetosPerro){
+            this._idPerro = ++Perro.contadorDeObjetosPerro;
+        }
+        else{
+            console.log('Alncazaste el número maximo de objetos perro');
+        }
+    }
+
+    nombreCompleto(){
+        return 'ID ' + this._idPerro + ': ' + this._nombre + ' ' + this._apellido;
+    }
+    
+    toString(){
+        return this.nombreCompleto();
+    }
+}
+
+let perro1 = new Perro('Wero', 'Rodriguez');
+console.log(perro1.toString());
+
+let perro2 = new Perro('Justin', 'Wieber');
+console.log(perro2.toString());
+
+let perro3 = new Perro('Tita', 'LaGorda');
+console.log(perro3.toString());
+
+// Imprimos el valor de 'NumeroMaximoDeObjetos'
+console.log(Perro.NumeroMaximoDeObjetosPerro);
+
+// Intentamos modificar el valor de 'NumeroMaximoDeObjetos' y reimprimimos para verificar que no fue posible
+// ya que no fue definido un metodo set dentro de la clase 'Perro'
+Perro.NumeroMaximoDeObjetos = 10;
+console.log(Perro.NumeroMaximoDeObjetosPerro);
+
+
+// Creamos los objetos faltantes para llegar hasta nuestro limite de objetos tipo Perro y podemos ver
+// como el sexto perro no cuenta con un ID ya que superó el limite de objetos por crear permitidos.
+let perro4 = new Perro ('Bethoven', 'Zabloudowsky');
+console.log(perro4.toString());
+let perro5 = new Perro ('Flofy', 'Potter');
+console.log(perro5.toString());
+let perro6 = new Perro ('Suput', 'Amare');
+console.log(perro6.toString());
