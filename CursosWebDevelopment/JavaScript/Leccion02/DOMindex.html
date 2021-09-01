@@ -12,11 +12,19 @@
         }
     </style>
 </head>
-<body>
+<body onload="entradoALaPagina()">
     <h1 id="cabecero" class="azul">Ejemplo DOM o Document Object Model con JavaScript</h1>
+    <button onclick="cambiarDeColorH1()">Cambiar color h1</button>
     <p id="parrafo" class="azul">Saludos y acuerdese que es mi prro</p>
-    <p class="azul">Otro parrafo no más</p>
-    <p class="azul">Otro parrafo que hubolas</p>
+    <p id="parrafo2" class="azul">Otro parrafo no más</p>
+    <p id="parrafo3" class="azul">Otro parrafo que hubolas</p>
+    <!-- A continuación en la siguiente etiqueta 'h1' se ejemplifica como darle una función
+         con Javascript desde la misma etiqueta hacieno uso de de 'this' el cual hace referencia
+         al objeto 'h1'-->
+    <h1 onclick="this.innerHTML='h1 modificado desde la misma etiqueta en HTML'">Da click aquí para ver como se modifica este h1</h1>
+    <h1 onclick="cambiarTitulo(this)">Da click aquí otra vez mi prro</h1>
+    <p id="parrafito">Otro ejemplito, da click paps ;)</p>
+    <img src="https://www.globalmentoring.com.mx/imagenes/javascript.png" id="imagen" alt="" onclick="cambiarImagen2()">
     <script>
         console.log('Saludos desde JavaScript mi prro!! JSjsjs');
         // let ValorCabecero = document.getElementById('cabecero').innerHTML;
@@ -51,6 +59,49 @@
         cabecero.innerHTML = 'Encabezado editado desde JavaSript';
         console.log(`Valor o Texto del cabecero Actual:    ${ValorCabecero.innerHTML}`);
 
+        // Otra forma para realizar la modificación de un valor o un texto
+        document.getElementById('parrafo2').innerHTML = 'Párrafo editado desde JavaScript'
+        console.log(`Valor o Texto del párrafo 2:   ${parrafo2.innerHTML}`);
+
+        // En este caso en vez de sólo modificar el valor o texto, se le anexarán mas
+        // cosas al valor de la etiqueta.
+        document.getElementById('parrafo3').innerHTML += '<br/>Anexo desde JavaScript al párrafo de arriba'
+
+        // Si tenemos una imagen de la misma forma podemos cambiar su source, en este caso se realizará
+        // con una funcion que al dar click en una imagen realize el cambio de source
+        function cambiarImagen(){
+            document.getElementById('imagen').src = 'https://i.blogs.es/594843/chrome/450_1000.jpg';
+        }
+        
+        // En caso de ser una imagen local sólo ponemos la dirección de la imagen
+        function cambiarImagen2(){
+            document.getElementById('imagen').src = 'AbrahamPandemictimes.png';
+        }
+
+        // La siguiente será una función que al dar click en un boton se cambie el color 
+        // de nuestro titulo
+        function cambiarDeColorH1(){
+            document.getElementById('cabecero').style.color = 'white';
+        }
+
+        // Creamos una función que recibe como parametro 'this' al cual podemos
+        // llamrle como sea, en este caso se le pondrá el nombre de 'titulo',
+        // termina haciendo referencia a la etiqueta en dónde está siendo usada
+        function cambiarTitulo(titulo){
+            console.log(titulo);
+            console.log(titulo.innerHTML);
+            if (titulo.innerHTML = 'Da click aquí otra vez mi prro'){
+                titulo.innerHTML = 'Cambio de titulo mediante JavaScript';
+            }
+            console.log(titulo.innerHTML);
+        }
+
+        // Otro ejemplo para manipular el DOM
+        document.getElementById('parrafito').onclick = cambiarTexto;
+        function cambiarTexto(){
+            document.getElementById('parrafito').innerHTML = 'nuevo parrafito, yeah :)'
+        }
+
         // A continuación en se usa getElementsByTagName para crear un ciclo donde se muestren 
         // todas las etiquetas de la clase parrafo
         let parrafos = document.getElementsByTagName('p');
@@ -81,8 +132,20 @@
         for (let elemento of otrosElementos){
             console.log(`${elemento.innerHTML}`);
         }
-        
+
+        // Creamos una función que se usará en el evento 'onload' dentro del budy de la página
+        // en dónde podemos aprovechar para hacer un seteo de posibles utilidades que se ocuparán.
+        function entradoALaPagina(){
+            alert('Entrando a la página');
+            let texto = '';
+            if (navigator.cookieEnabled){
+                texto = 'Las cookies están habilitadas'
+            }
+            else
+                texto = 'Las cookies no están habilitadas'
+            console.log(texto);
+            //alert(texto);
+        }
     </script>
-    
 </body>
 </html>
