@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>DOM o Document Object Model</title>
+    <style>
+        .azul{
+            color:blue
+        }
+    </style>
+</head>
+<body>
+    <h1 id="cabecero" class="azul">Ejemplo DOM o Document Object Model con JavaScript</h1>
+    <p id="parrafo" class="azul">Saludos y acuerdese que es mi prro</p>
+    <p class="azul">Otro parrafo no más</p>
+    <p class="azul">Otro parrafo que hubolas</p>
+    <script>
+        console.log('Saludos desde JavaScript mi prro!! JSjsjs');
+        // let ValorCabecero = document.getElementById('cabecero').innerHTML;
+        // let ObjetoCabecero = document.getElementById('cabecero');
+        // console.log('Valor o Texto del cabecero: ' + ValorCabecero);
+        // console.log('Valor o Texto del cabecero: ' + ObjetoCabecero);
+        // 
+        // let ValorParrafo = document.getElementById('parrafo').innerHTML;
+        // let ObjetoParrafo = document.getElementById('parrafo');
+        // console.log('Valor o Texto del párrafo: ' + ValorParrafo);
+        // console.log('Valor o Texto del párrafo: ' + ObjetoParrafo);
+        
+        // Escribir lo anterior tambien es lo mismo a escribirlo de la siguinete manera
+        
+        let ValorCabecero = document.getElementById('cabecero');
+        console.log(`Valor o Texto del cabecero:    ${ValorCabecero.innerHTML}`);
+        let ObjetoCabecero = document.getElementById('cabecero');
+        console.log(`Cabecero como Objeto:          ${ObjetoCabecero}`);
+        
+        let ValorParrafo = document.getElementById('parrafo');
+        console.log(`Valor o Texto del párrafo:     ${ValorParrafo.innerHTML}`);
+        let ObjetoParrafo = document.getElementById('parrafo');
+        console.log(`Párrafo como Objeto:           ${ObjetoParrafo}`);
+        
+        //Para modificar el valor del parrafo lo podemos hacer de la siguiente manera,
+        // en la primera línea con 'parrafo.innerHTML' se está cambiando directamente el
+        // valor de la etiqueta, por lo cual se verá reflejado el cambio visualmente,
+        // la segunda línea es para ver el valor acutal de la variable ValorParrafo
+        parrafo.innerHTML = 'Quiubolas mi prro! Aquí modificando el texto de la etiqueta P';
+        console.log(`Valor o Texto del párrafo Actual:     ${ValorParrafo.innerHTML}`);
+        
+        cabecero.innerHTML = 'Encabezado editado desde JavaSript';
+        console.log(`Valor o Texto del cabecero Actual:    ${ValorCabecero.innerHTML}`);
+
+        // A continuación en se usa getElementsByTagName para crear un ciclo donde se muestren 
+        // todas las etiquetas de la clase parrafo
+        let parrafos = document.getElementsByTagName('p');
+        console.log(`No. de párrafos: ${parrafos.length}`);
+        for (let i=0; i < parrafos.length; i++){
+            console.log(`$Iteración numero:${i}  ${parrafos[i].innerHTML}`);
+        }
+
+        // A continuación en se usa getElementsByClassName para crear un ciclo donde se muestren 
+        // todas las etiquetas que contengan la determinada clase. 
+        // Se crea la clase '.azul' dentro de este mismo archivo para este ejemplo
+        let elementos = document.getElementsByClassName('azul');
+        console.log(`No. de párrafos: ${elementos.length}`);
+        for (let i=0; i < elementos.length; i++){
+            console.log(`$Iteración numero:${i}  ${elementos[i].innerHTML}`);
+        }
+        //Otra forma de escribir este mismo ciclo:
+        let nuevosElementos = document.getElementsByClassName('azul');
+        console.log(`No. de elementos: ${nuevosElementos.length}`);
+        for (let elemento of nuevosElementos){
+            console.log(`${elemento.innerHTML}`);
+        }
+
+        // A continuación en se usa querySelectorAll para crear un ciclo donde se muestren 
+        // todas las etiquetas que contengan la determinada combinación de etiqueta y clase. 
+        let otrosElementos = document.querySelectorAll('p.azul');
+        console.log(`No. de elementos: ${otrosElementos.length}`);
+        for (let elemento of otrosElementos){
+            console.log(`${elemento.innerHTML}`);
+        }
+        
+    </script>
+    
+</body>
+</html>
