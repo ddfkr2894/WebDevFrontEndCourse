@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de DOM con JavaScritp</title>
+</head>
+<body>
+    <h1>Manejo de document.Write</h1>
+    <button onclick="mostrar()">Mostrar</button>
+    <br>
+    <script>
+        // Si queremos mandar informacion directmente a la salida del documento html
+        // Si queremos hacer modificaciones una ve que yz se cargo el documento html
+        // esto sobre escribe cualquier información que tengamos previa a este mensaje
+        document.write('Saludos desde Javascript dentro de html');
+        function mostrar(){
+            document.write('Adios');
+        }
+    </script>
+</body>
+</html>
