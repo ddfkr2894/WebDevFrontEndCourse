@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Personas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Las siguientes referencias a los archivos 'persona.js' y 'app.js'pueden 
+    ir en cualquier parte del 'budy', o bien dentro del 'head', se acostumbra colocar
+    en la última parte del budy. Y es muy importante mencionar que para que el archivo 
+    'app.js' pueda reconocer las clases creadas en otros archivos es necesario declarar 
+    esas importanciones antes de lo contrario marcara errores por variables o metodos 
+    indefinidos-->
+    <!-- <script type="text/javascript" src="js/persona.js"></script>
+    <script type="text/javascript" src="js/app.js"></script> -->
+</head>
+<body onload="mostrarPersonas()">
+    <script type="text/javascript" src="js/persona.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    
+    <div class="contenedor" id="encabezado">
+        <h1>Listado de Personas Mamalonas</h1>
+    </div>
+    
+    <div class="contenedor">
+        <div class="elemento">
+            <ul id="personas">
+                
+            </ul>
+        </div>
+    </div>
+    
+    <div class="contenedor">
+        <div style="text-align: center;">
+            <button style="cursor: pointer" onclick="agregarPersonas()">+</button>
+        </div>
+        <form action="" id="forma">
+            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="apellido" placeholder="Apellido">
+        </form>
+    </div>
+
+</body>
+</html>
