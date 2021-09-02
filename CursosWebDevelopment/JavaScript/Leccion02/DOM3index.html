@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Este ejemplo es practicamente el mismo a los que se ven en el archivo DOM2index.html
+    aquí sólo se ejemplifica como hacer uso del concepto de Use Caputre o Delegacion de Eventos
+    a traves de los elementos dentro de un form en html-->
+    <h1>Manejo de DOM</h1>
+    <form action="" id="forma">
+        Nombre: <input type="text" id="nombre"/>
+        <br>
+        Apellido: <input type="text" id="apellido"">
+    </form>
+    <script>
+        const forma = document.getElementById('forma');
+
+        // El parametro booleano dónde se ve 'true' sirve para indicar que lo que se
+        // ha configurado tambien se aplique a los elementos dentro del form a esto  
+        // tambien se le conoce como 'Use Capture' o 'Delegacion de Evento', de locontrario 
+        // se quedará en su configuración por default que es 'False'.
+        forma.addEventListener('focus', (evento)=>{
+            evento.target.style.background = 'pink';
+        }, true);
+
+        forma.addEventListener('blur', (evento)=>{
+            evento.target.style.background = 'white';
+        }, true);
+
+    </script>
+</body>
+</html>
