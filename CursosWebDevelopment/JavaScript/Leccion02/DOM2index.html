@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- El evento 'onmouseover' es para cuando hacemos hover over sobre algún elemento
+    y el evento onmouseout es cuando quitamos el mouse de determinado elemento  -->
+    <h1 id='titulo' onmouseover="rojo()" onmouseout="azul()">Manejo DOM con JavaScript</h1>
+    <!-- El evento on down sucede cuando presionamos el click y el evento onmouseup 
+    ocurre cuando liberamos el boton despues de dar click-->
+    <h1 id='otroTitulo' onmouseup="rojo2()" onmousedown="azul2()">Manejo DOMOMOMOMO con JavaScript</h1>
+    <br/>
+    Nombre: <input type="text" onchange="convertir(this)"/>
+    <br>
+    <!-- El evento 'onfocus' sucede cuando hemos hecho click o de alguna manera nos encontramos
+    interactuando con algún elemento. El evento 'onblur' sucede cuando ya no estamos interactuando-->
+    Apellido: <input type="text" onfocus="cambiar(this)" onblur="regresar(this)">
+    <h1>Otro ejemplito de como programar los eventos</h1>
+    Nombre Mamador: <input type="text" id="nombreMamador"/>
+    <br>
+    Apellido Mamador: <input type="text" id="apellidoMamador">
+    <br>
+    Numero de Telefono Mamador: <input type="text" id="numeroDeTelefonoMamador">
+    <script>
+        // El evento on change sucede cuando nos movemos de un elemnto a otro dentro de la pagina
+        // en este caso esta funcion lo que realiza es un cambio de letras a mayusuclas una vez
+        // detecta que el evento se realiza
+        function convertir(nombreInput){
+            nombreInput.value = nombreInput.value.toUpperCase();
+        }
+
+        function rojo(){
+            titulo.style.color = 'red';
+        }
+
+        function azul(){
+            titulo.style.color = 'blue';
+        }
+
+        function rojo2(){
+            otroTitulo.style.color = 'red';
+        }
+
+        function azul2(){
+            otroTitulo.style.color = 'blue';
+        }
+
+        function cambiar(elementoInput){
+            elementoInput.style.background = 'yellow';
+        }
+
+        function regresar(elementoInput){
+            elementoInput.style.background = 'white';
+        }
+
+        // Hasta ahora se han programado los eventos setenadolos en las etiqueetas, pero 
+        // tambien se puede realizar mediante código en JavaScipt.
+        // Se crearan otras 2 etiquetas como 'nombre' y 'apellido' para realizar el ejemplo.
+        document.getElementById('nombreMamador').addEventListener('focus', cambiar2);
+        document.getElementById('nombreMamador').addEventListener('blur', regresar2);
+        document.getElementById('apellidoMamador').addEventListener('focus', cambiar2);
+        document.getElementById('apellidoMamador').addEventListener('blur', regresar2);
+
+        function cambiar2(evento){
+            let componenete = evento.target;
+            componenete.style.background = 'yellow';
+        }
+        // Se crea una función identica sólo que simplificada a una línea
+        function regresar2(evento){
+            evento.target.style.background = 'white';
+        }
+
+        // A continuación un mismo ejemplo, pero con funciones flecha
+        document.getElementById('numeroDeTelefonoMamador').addEventListener('focus', (evento)=>{
+            evento.target.style.background = 'pink';
+        });
+
+        document.getElementById('numeroDeTelefonoMamador').addEventListener('blur', (evento)=>{
+            evento.target.style.background = 'white';
+        });
+
+
+    </script>
+</body>
+</html>
