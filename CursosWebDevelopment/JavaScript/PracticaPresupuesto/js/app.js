@@ -98,11 +98,19 @@ const crearEgresoHTML = (egreso) =>{
             <div class="elemento_porcentaje">${formatoPorcentaje(egreso._valor/totalEgresos())}</div>
             <div class="elemento_eliminar">
                 <button class="elemento_eliminar--btn">
-                    <ion-icon name="close-outline"></ion-icon>
+                    <ion-icon name="close-outline"
+                    onclick="eliminarEgreso(${egreso._id})"></ion-icon>
                 </button>
             </div>
         </div>
     </div>
     `;
     return egresoHTML;
+}
+
+const eliminarEgreso = (ID) =>{
+    let indiceAEliminar = egresos.findIndex(egreso => egreso._id===ID);
+    egresos.splice(indiceAEliminar, 1);
+    cargarEncabezado();
+    cargarEgresos();
 }
