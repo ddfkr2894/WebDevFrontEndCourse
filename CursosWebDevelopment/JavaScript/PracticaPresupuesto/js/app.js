@@ -1,12 +1,13 @@
 const ingresos = [
-    new Ingreso('Salario', 9,000),
-    new Ingreso('Venta de Coche', 500),
-    new Ingreso('caca', 200)
+    new Ingreso('Salario', 6,000),
+    // new Ingreso('Venta de Coche', 500),
+    // new Ingreso('Unas caquitas bien frias', 200)
 ];
 
 const egresos = [
-    new Egreso('Renta de Departamento', 900),
-    new Egreso('Ropa', 400)
+    new Egreso('Crédito del Coche', 2200),
+    new Egreso('AT&T', 400)
+    new Egreso('Luz', 200)
 ];
 
 let cargarApp = () =>{
@@ -113,4 +114,25 @@ const eliminarEgreso = (ID) =>{
     egresos.splice(indiceAEliminar, 1);
     cargarEncabezado();
     cargarEgresos();
+}
+
+const agregarDato = () =>{
+    let forma = document.forms['forma'];
+    let tipo = forma['tipo'];
+    let descripcion = forma['descripcion'];
+    let valor = forma['valor'];
+    if(descripcion.value !== '' && valor.value !== ''){
+        if(tipo.value === 'Ingreso'){
+            // ingresos.push(new Ingreso(descripcion.value, Number(valor.value)));
+            ingresos.push(new Ingreso(descripcion.value, +valor.value));
+            cargarEncabezado();
+            cargarIngresos();
+        }
+        else if(tipo.value === 'Egreso'){
+            egresos.push(new Egreso(descripcion.value, Number(valor.value)));
+            // egresos.push(new Ingreso(descripcion.value, +valor.value));
+            cargarEncabezado();
+            cargarEgresos();
+        }
+    }
 }
