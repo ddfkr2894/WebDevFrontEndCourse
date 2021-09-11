@@ -1,12 +1,12 @@
 const ingresos = [
-    new Ingreso('Salario', 6,000),
+    new Ingreso('Salario', 6000),
     // new Ingreso('Venta de Coche', 500),
     // new Ingreso('Unas caquitas bien frias', 200)
 ];
 
 const egresos = [
     new Egreso('Crédito del Coche', 2200),
-    new Egreso('AT&T', 400)
+    new Egreso('AT&T', 400),
     new Egreso('Luz', 200)
 ];
 
